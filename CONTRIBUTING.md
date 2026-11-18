@@ -54,6 +54,10 @@ npx --yes markdownlint-cli2@0.24.1 "**/*.md"    # Markdown lint
 
 Pull requests run these checks automatically. Live URL verification is a separate, manually triggered workflow (`Verify live URLs`) run by maintainers, because a temporary network failure should not block a contribution. Contributors may also run `python3 scripts/validate_catalogue.py links` locally. It contacts only `seeitflow.com`.
 
+### Proposing new files
+
+You can propose new documentation, tests or repository maintenance files in a pull request without editing the validator. Standard validation accepts unfamiliar files that pass the security checks and lists them as warnings for maintainer review. Files that contain credentials, unapproved email addresses or private material, or that are internal reports, inventories, backups or local tool configuration, always fail. Before publication, maintainers run `check --release`, which requires every file to be on the approved public file manifest, so acceptance of a new file is a maintainer decision.
+
 ## Data format
 
 `data/resources.json` has `schema_version`, `site`, `site_pages` and `resources`. Each resource has `id` (kebab-case), `kind` (`foundation`, `design` or `production`), `group`, `title` and `url`, plus:
