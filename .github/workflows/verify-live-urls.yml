@@ -1,0 +1,59 @@
+name: Verify live URLs
+
+# Manual only. Run from the default branch or a reviewed branch after owner approval.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-live-urls
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    if: github.repository == 'seeitflow/system-design' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/sd_creation')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 70
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Verify catalogue URLs on seeitflow.com
+        run: python3 scripts/validate_catalogue.py links --workers 3 --json live-url-evidence.json
+
+      - name: Summarize results
+        if: always()
+        run: |
+          python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, os
+          if not os.path.exists("live-url-evidence.json"):
+              print("No evidence file was produced.")
+          else:
+              ev = json.load(open("live-url-evidence.json"))
+              s = ev.get("summary", {})
+              print("| Check | URLs |\n| --- | --- |")
+              for key in ("total", "verified", "broken", "redirected", "uncertain_or_blocked",
+                          "content_mismatch", "canonical_mismatch", "robots_issue"):
+                  print(f"| {key.replace('_', ' ')} | {s.get(key, 'n/a')} |")
+              print(f"\nSource commit: `{ev.get('source_commit')}`  ")
+              print(f"Catalogue digest: `{ev.get('catalogue_digest')}`  ")
+              print(f"Validator version: `{ev.get('validator_version')}`")
+          PY
+
+      - name: Upload structured evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: live-url-evidence
+          path: live-url-evidence.json
+          if-no-files-found: warn
+          retention-days: 30

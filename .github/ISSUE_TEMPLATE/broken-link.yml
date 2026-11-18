@@ -1,0 +1,44 @@
+name: Broken or incorrect link
+description: Report a catalogue link that fails, redirects somewhere unexpected or points to the wrong page.
+title: "Broken link: "
+labels: ["broken-link"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please do not include personal or sensitive information. Credentials, security issues and conduct reports must be sent confidentially; see SECURITY.md. By submitting you agree to the contribution terms in CONTRIBUTING.md.
+  - type: input
+    id: entry
+    attributes:
+      label: Catalogue entry
+      description: The entry title and the README section it appears in.
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Link URL
+      description: The URL as it appears in the README.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened
+      description: For example an error page, an unexpected redirect, or content that does not match the description.
+    validations:
+      required: true
+  - type: input
+    id: observed
+    attributes:
+      label: Date observed and redirect target
+      description: Optional. When you saw the problem and, if it redirected, where to.
+    validations:
+      required: false
+  - type: input
+    id: replacement
+    attributes:
+      label: Suggested correct URL
+      description: Optional. Only include a link you have opened and checked.
+    validations:
+      required: false

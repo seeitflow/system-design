@@ -1,0 +1,32 @@
+# Local review artifacts and working documents (never published)
+.review/
+SEEITFLOW_*_REQUIREMENTS.md
+SEEITFLOW_*_INVENTORY.json
+SEEITFLOW_*_REVIEW.md
+*.bak
+live-url-evidence*.json
+*.bundle
+prompt.txt
+IDENTITY_POLICY.json
+APPROVED_BASELINE.json
+
+# Editors, tools and OS files
+.idea/
+.vscode/
+.wibey/
+.copilot/
+.DS_Store
+
+# Secrets and local environment
+.env
+.env.*
+
+# Python and Node caches
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+
+# Temporary files
+*.log
+*.tmp

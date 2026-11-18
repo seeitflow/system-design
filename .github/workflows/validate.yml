@@ -1,0 +1,40 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Install YAML parser
+        run: python3 -m pip install --disable-pip-version-check PyYAML==6.0.2
+
+      - name: Validate catalogue, README generation, links between files, YAML and public tree
+        run: python3 scripts/validate_catalogue.py check
+
+      - name: Run validator tests
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Lint Markdown
+        run: npx --yes markdownlint-cli2@0.24.1 "**/*.md"

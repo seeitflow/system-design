@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: SeeItFlow website feedback
+    url: https://seeitflow.com/contact
+    about: Feedback about the SeeItFlow website or its lessons. Issues here cover this catalogue only.
+  - name: Security or confidential report
+    url: https://github.com/seeitflow/system-design/security/policy
+    about: Do not open a public issue for vulnerabilities, exposed credentials or conduct reports. Follow the security policy, which lists the confidential contact.

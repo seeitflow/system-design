@@ -1,0 +1,46 @@
+Copyright (c) 2026 SeeItFlow. All Rights Reserved.
+
+This repository is published publicly for reading and for contribution to the
+SeeItFlow system design resource directory. It is not open source software.
+
+1. Reserved rights. Except as stated below, no license or permission is
+   granted to copy, reproduce, modify, adapt, translate, distribute, sublicense,
+   publicly perform or display, sell, or otherwise use any part of this
+   repository, whether for commercial or non-commercial purposes, without the
+   prior written permission of SeeItFlow. This covers the catalogue text and
+   structure, the scripts and tests, the documentation, the configuration and
+   every other file in the repository.
+
+2. Rights that are not affected. Nothing in this notice limits:
+   (a) rights that cannot be excluded or restricted under applicable law,
+       including statutory exceptions and limitations to copyright such as fair
+       use or fair dealing; or
+   (b) the rights that the GitHub Terms of Service give to other GitHub users,
+       such as viewing this repository and forking it on GitHub through
+       GitHub's functionality, for as long as the repository is public.
+
+3. Website and brand. The lessons, case studies, diagrams, interactive
+   visualizations, application and educational materials on seeitflow.com are
+   not part of this repository and are not licensed by it. "SeeItFlow", its
+   logos and its branding are trademarks or brand assets of SeeItFlow. No right
+   to use them is granted, except to refer to SeeItFlow accurately.
+
+4. Third-party material. Any third-party material remains the property of its
+   owners and is subject to its own license or attribution requirements.
+   Linking to a third-party resource does not grant any right in it.
+
+   Third-party notice: CODE_OF_CONDUCT.md is adapted from the
+   Contributor Covenant, version 2.1, which is licensed under Creative Commons
+   Attribution 4.0 International (CC BY 4.0),
+   https://creativecommons.org/licenses/by/4.0/. That document stays under
+   CC BY 4.0, with the attribution and statement of changes it contains. This
+   notice applies to no other file, and SeeItFlow's original material remains
+   All Rights Reserved.
+
+5. Contributions. Contributions are governed by the contribution terms in
+   CONTRIBUTING.md.
+
+6. No warranty. This repository is provided "as is", without warranty of any
+   kind.
+
+To ask for permission, use the contact page at https://seeitflow.com/contact.

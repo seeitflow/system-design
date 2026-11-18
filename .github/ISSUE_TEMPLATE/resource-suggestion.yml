@@ -1,0 +1,49 @@
+name: Resource suggestion
+description: Suggest an additional resource for the catalogue.
+title: "Suggestion: "
+labels: ["resource-suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Read CONTRIBUTING.md first. Suggestions must be relevant to system design, independently useful and verified by you. By submitting you agree to the contribution terms in CONTRIBUTING.md. External references are considered separately and are never added automatically. Promotional, affiliate and reciprocal-link requests will be closed. Please do not include personal or sensitive information.
+  - type: dropdown
+    id: lane
+    attributes:
+      label: Kind of suggestion
+      options:
+        - Missing SeeItFlow lesson for the catalogue
+        - External reference for separate editorial consideration
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Resource URL
+      description: A canonical HTTPS link you have opened and checked.
+    validations:
+      required: true
+  - type: textarea
+    id: value
+    attributes:
+      label: What the learner will understand
+      description: One or two sentences in your own words. Do not paste text from the resource.
+    validations:
+      required: true
+  - type: textarea
+    id: fit
+    attributes:
+      label: Why it belongs in this catalogue
+      description: Which section it fits and what existing entries do not already cover.
+    validations:
+      required: true
+  - type: dropdown
+    id: affiliation
+    attributes:
+      label: Your relationship to the resource
+      options:
+        - I am the author or publisher
+        - I work for, or am paid by, the author or publisher
+        - No affiliation
+    validations:
+      required: true
