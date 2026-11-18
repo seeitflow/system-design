@@ -22,7 +22,7 @@ The lessons are currently free to read on SeeItFlow, with no registration requir
 - [Foundations and distributed building blocks](#foundations-and-distributed-building-blocks)
 - [Architecture and production engineering](#architecture-and-production-engineering)
 - [System design interview preparation](#system-design-interview-preparation)
-- [About, contributing and license](#about-contributing-and-license)
+- [About, contributing and license](#about-and-contributing)
 
 ## Recommended learning path
 
@@ -223,10 +223,12 @@ These are learning designs inspired by familiar products. They are educational e
 
 A practical loop for any design problem: clarify the requirements, estimate the scale, identify the constraints, outline the architecture, then analyze trade-offs and failure modes. Attempt a design on your own first, then compare your reasoning with the matching [case study](#system-design-case-studies). Each case study on SeeItFlow includes an interview perspective page. No resource here guarantees an interview outcome.
 
-## About, contributing and license
+## About and contributing
 
 This repository is a public educational resource directory published by SeeItFlow. Learn more on the [SeeItFlow About page](https://seeitflow.com/about). Complete lessons, visualizations and case studies are on the website and are not part of this repository.
 
 Found a broken link or a technical error, or want to suggest a resource? Use the [issue templates](https://github.com/seeitflow/system-design/issues/new/choose) or read [CONTRIBUTING.md](CONTRIBUTING.md). Product feedback is welcome on the [SeeItFlow contact page](https://seeitflow.com/contact).
 
-<!-- LICENSE-PENDING: owner decision required; see the release checklist -->
+## License
+
+Copyright (c) 2026 SeeItFlow. All rights reserved. This repository is public but is not open source: see [LICENSE](LICENSE). The SeeItFlow lessons, visualizations, name and branding are not licensed by this repository. Contributions are accepted under the terms in [CONTRIBUTING.md](CONTRIBUTING.md#contribution-terms).

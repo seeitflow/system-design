@@ -14,10 +14,11 @@ Never post credentials or exploit details in a public issue, pull request or dis
 
 ## How to report
 
-If the **Security** tab of this repository offers **Report a vulnerability**, use GitHub private vulnerability reporting. Otherwise, contact SeeItFlow at [hello@seeitflow.com](mailto:hello@seeitflow.com) without including secrets or exploit details, and ask for a private channel. Do not use public issues for these reports.
+Email [hello@seeitflow.com](mailto:hello@seeitflow.com) with the subject "Security report: system-design". Describe the issue and where you found it. Do not include exploit code, credentials or personal data in the first message; the maintainers will reply with how to share further detail. Do not use public issues for these reports.
 
-<!-- SECURITY-CHANNEL-PENDING: confirm private reporting is enabled and the contact address is monitored before publication -->
-<!-- OWNER-CONFIRMATION-PENDING: no response-time commitment is made until the owner confirms one -->
+GitHub private vulnerability reporting is intended as an additional channel. It has not been confirmed as enabled; do not rely on it until the **Security** tab of this repository offers **Report a vulnerability**.
+
+Confidential community and conduct reports go to the same address, as described in the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Out of scope
 

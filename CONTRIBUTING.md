@@ -19,7 +19,7 @@ A catalogue change is not automatically a website content change. Website correc
 
 ## Report an issue
 
-Use the [issue templates](https://github.com/seeitflow/system-design/issues/new/choose): broken link, technical correction or resource suggestion. Do not include personal or sensitive information. Report leaked credentials or malicious links privately as described in [SECURITY.md](SECURITY.md).
+Use the [issue templates](https://github.com/seeitflow/system-design/issues/new/choose): broken link, technical correction or resource suggestion. Do not include personal or sensitive information. Report leaked credentials, malicious links and other security concerns privately as described in [SECURITY.md](SECURITY.md); report conduct concerns confidentially to [hello@seeitflow.com](mailto:hello@seeitflow.com).
 
 ## Propose a resource or change
 
@@ -63,10 +63,16 @@ Pull requests run these checks automatically. Live URL verification is a separat
 
 Text must not contain Markdown or HTML characters. IDs, titles and URLs must be unique. URLs must be HTTPS, on an approved host, with no port, credentials, query string or fragment.
 
-## Licensing of contributions
+## Contribution terms
 
-<!-- LICENSE-PENDING: the repository license and the contribution terms are an owner decision -->
-The repository license has not been announced yet. Please wait for it before contributing substantial changes.
+This repository is public but not open source; see [LICENSE](LICENSE). By submitting a pull request, issue, suggestion or other contribution, you confirm that:
+
+1. You wrote it yourself, or you have the right to submit it, and it does not include confidential information or third-party material you may not share.
+2. You keep ownership of your contribution, and you grant SeeItFlow a perpetual, worldwide, non-exclusive, irrevocable, royalty-free, transferable and sublicensable license to use, reproduce, modify, publish, distribute and otherwise exploit it, in this repository, on seeitflow.com and in any other SeeItFlow product or material, with or without attribution.
+3. Your contribution may be edited, merged, declined or removed at SeeItFlow's discretion, and no compensation is owed.
+4. Submitting a contribution does not give you any right in SeeItFlow's name, branding, website content or other materials.
+
+If you cannot agree to these terms, do not submit a contribution.
 
 ## Website feedback
 

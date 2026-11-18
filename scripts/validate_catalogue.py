@@ -235,6 +235,21 @@ def all_urls(data):
     return [data["site"]] + [pages[k] for k in SITE_PAGE_KEYS] + [r["url"] for r in data["resources"]]
 
 
+def check_license(root=ROOT):
+    """The repository is public but not open source: LICENSE must be All Rights Reserved."""
+    path = root / "LICENSE"
+    if not path.is_file():
+        return ["license: LICENSE file is missing"]
+    text = path.read_text(encoding="utf-8")
+    errors = []
+    if "all rights reserved" not in text.lower():
+        errors.append("license: LICENSE must state All Rights Reserved")
+    for term in ("permission is hereby granted", "apache license", "creative commons", "gnu general public", "mit license"):
+        if term in text.lower():
+            errors.append(f"license: LICENSE must not grant open-source terms ('{term}')")
+    return errors
+
+
 # --------------------------------------------------------------- rendering
 def counts(data):
     c = {k: sum(r["kind"] == k for r in data["resources"]) for k in KINDS}
@@ -730,7 +745,7 @@ def release_blockers(files, data, evidence_path, baseline_path, root=ROOT, with_
                 if marker in text:
                     blockers.append(f"{f}: unresolved marker '{marker.strip()}'")
     if "LICENSE" not in files:
-        blockers.append("LICENSE: not present (owner decision required)")
+        blockers.append("LICENSE: not tracked or present")
     for label, path, fn in (("evidence", evidence_path, lambda d: evidence_blockers(data, d)),
                             ("baseline", baseline_path, lambda d: baseline_blockers(data, d))):
         if not path or not Path(path).exists():
@@ -760,7 +775,7 @@ def run_check(args):
         errors.append(f"README: {e}")
     errors += check_readme_coverage(readme, data)
     files = public_files()
-    errors += check_markdown(files) + check_site_links(files, data) + check_tree(files)
+    errors += check_markdown(files) + check_site_links(files, data) + check_tree(files) + check_license()
     if args.skip_yaml:
         yaml_state = "skipped"
     else:
@@ -775,8 +790,8 @@ def run_check(args):
     for b in blockers:
         print("BLOCKER  " + b)
     if args.release:
-        print("MANUAL GATES (not verifiable by this script): owner editorial review, license approval, "
-              "GitHub rendering, GitHub Actions run, repository settings, confidential reporting channel")
+        print("MANUAL GATES (not verifiable by this script): owner editorial review, GitHub rendering, "
+              "GitHub Actions run, repository settings, private vulnerability reporting enablement")
     if errors:
         return 1
     if blockers:

@@ -194,6 +194,26 @@ class TreeTests(unittest.TestCase):
         self.assertEqual(len(errs), 1)
 
 
+class LicenseTests(unittest.TestCase):
+    def check(self, text):
+        with tempfile.TemporaryDirectory() as d:
+            if text is not None:
+                (Path(d) / "LICENSE").write_text(text, encoding="utf-8")
+            return v.check_license(Path(d))
+
+    def test_all_rights_reserved_passes(self):
+        self.assertEqual(self.check("Copyright (c) 2026 X. All Rights Reserved.\n"), [])
+
+    def test_missing_and_permissive_fail(self):
+        self.assertTrue(self.check(None))
+        self.assertTrue(self.check("Some text without the reservation"))
+        self.assertTrue(self.check("All Rights Reserved. Permission is hereby granted, free of charge"))
+        self.assertTrue(self.check("All rights reserved. Licensed under the Apache License"))
+
+    def test_repository_license(self):
+        self.assertEqual(v.check_license(), [])
+
+
 class WorkflowTests(unittest.TestCase):
     SHA = "a" * 40
 
@@ -409,7 +429,7 @@ class ReleaseTests(unittest.TestCase):
             (root / "README.md").write_text("<!-- LICENSE-PENDING: x -->\n", encoding="utf-8")
             blockers = v.release_blockers(["README.md"], good_data(), None, None, root, with_history=False)
         text = "\n".join(blockers)
-        for needle in ("LICENSE-PENDING", "LICENSE: not present", "evidence: file not supplied", "baseline: file not supplied"):
+        for needle in ("LICENSE-PENDING", "LICENSE: not tracked", "evidence: file not supplied", "baseline: file not supplied"):
             self.assertIn(needle, text)
 
     def test_evidence_json_round_trip(self):
