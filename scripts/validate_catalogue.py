@@ -80,7 +80,7 @@ GENERAL_PAGE_TERMS = {
 ALLOWED_FILES = [
     r"README\.md", r"CONTRIBUTING\.md", r"CODE_OF_CONDUCT\.md", r"MAINTAINERS\.md",
     r"SECURITY\.md", r"LICENSE", r"\.gitignore", r"\.markdownlint-cli2\.yaml",
-    r"\.github/ISSUE_TEMPLATE/[^/]+\.yml", r"\.github/PULL_REQUEST_TEMPLATE\.md",
+    r"\.github/ISSUE_TEMPLATE/[^/]+\.yml", r"\.github/PULL_REQUEST_TEMPLATE\.md", r"\.github/CODEOWNERS",
     r"\.github/workflows/[^/]+\.yml", r"scripts/validate_catalogue\.py",
     r"tests/test_validate_catalogue\.py", r"data/resources\.json",
 ]
