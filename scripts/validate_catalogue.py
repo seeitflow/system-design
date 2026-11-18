@@ -4,7 +4,8 @@
 Commands:
   render    Regenerate the generated blocks in README.md from data/resources.json.
   check     Validate data, README, links, anchors, workflows, YAML, licensing and the public tree.
-            Add --release for evidence-based release blockers.
+            Unknown but safe files are warnings. Add --release for strict file-manifest
+            enforcement and evidence-based release blockers.
   links     Verify live catalogue URLs over HTTPS (network). Writes structured evidence.
   history   Classify commit identities against a local, private identity policy.
 
@@ -470,8 +471,12 @@ def public_files(root=ROOT):
     return sorted(set(out))
 
 
-def check_tree(files, root=ROOT):
-    """Allow-list, forbidden-path, symlink, nested repository, credential and email checks.
+def check_tree(files, root=ROOT, strict=False, warnings=None):
+    """Forbidden-path, symlink, nested repository, credential and email checks, plus the allow-list.
+
+    Files outside ALLOWED_FILES are reported to `warnings` for maintainer review in standard
+    validation and are still scanned like every other file. With strict=True (release
+    validation) they are errors, so the final manifest needs explicit approval.
 
     Operates on tracked and untracked-but-not-ignored files, so a file that is already tracked
     is still caught even if .gitignore later lists it. Findings are redacted.
@@ -490,7 +495,10 @@ def check_tree(files, root=ROOT):
             errors.append(f"tree: symlink not allowed: {f}")
             continue
         if not any(a.fullmatch(f) for a in allowed):
-            errors.append(f"tree: file is not on the public allow-list: {f}")
+            if strict:
+                errors.append(f"tree: file is not on the approved public file manifest: {f}")
+            elif warnings is not None:
+                warnings.append(f"tree: file is not on the approved public file manifest (review before release): {f}")
         if not p.is_file():
             continue
         try:
@@ -1322,7 +1330,9 @@ def run_check(args):
         errors.append(f"README: {e}")
     errors += check_readme_coverage(readme, data)
     files = public_files()
-    errors += check_markdown(files) + check_site_links(files, data) + check_tree(files)
+    warnings = []
+    errors += check_markdown(files) + check_site_links(files, data)
+    errors += check_tree(files, strict=args.release, warnings=warnings)
     errors += check_license() + check_gitignore()
     if args.skip_yaml:
         yaml_state = "skipped"
@@ -1332,6 +1342,8 @@ def run_check(args):
     c = counts(data)
     print(f"public files: {len(files)} | entries: {c['total']} ({c['design']} designs, {c['foundation']} foundations, "
           f"{c['production']} architecture/production) | yaml: {yaml_state} | catalogue {catalogue_digest(data)[:19]}")
+    for w in warnings:
+        print("WARNING  " + w)
     for e in errors:
         print("ERROR  " + e)
     blockers = (release_blockers(files, data, args.evidence, args.baseline, identity_policy=args.identity_policy)
@@ -1344,10 +1356,11 @@ def run_check(args):
               "GitHub-side retention of pre-rewrite commit objects")
     if errors:
         return 1
+    note = f" ({len(warnings)} file(s) need maintainer review)" if warnings else ""
     if blockers:
         print("RESULT: checks passed, NOT READY FOR PUBLICATION")
         return 2
-    print("RESULT: checks passed")
+    print("RESULT: checks passed" + note)
     return 0
 
 
