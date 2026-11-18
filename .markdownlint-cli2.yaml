@@ -3,10 +3,9 @@ config:
   MD013: false # long URLs and table rows are expected in a link catalogue
   MD033:
     allowed_elements: [] # raw HTML is not used in published Markdown
-  MD041: false # the pull request template starts at H2 by design
   MD024:
     siblings_only: true
 ignores:
   - ".review/**"
-  - "SEEITFLOW_*"
+  - "SEEITFLOW_*.md"
   - "node_modules/**"

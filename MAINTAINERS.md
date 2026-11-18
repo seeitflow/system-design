@@ -2,7 +2,7 @@
 
 This repository is maintained by the SeeItFlow organization. Responsibility for the catalogue, issue triage and review rests with the organization rather than with named individuals.
 
-Maintainer names, public profiles and contact details are not listed. They will be added only after the owner approves each public attribution.
+Individual maintainers are not named here. Reach the maintainers through the [SeeItFlow contact page](https://seeitflow.com/contact) or an issue in this repository.
 
 ## Responsibilities
 

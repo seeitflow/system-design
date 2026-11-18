@@ -29,6 +29,13 @@ body:
     validations:
       required: true
   - type: input
+    id: observed
+    attributes:
+      label: Date observed and redirect target
+      description: Optional. When you saw the problem and, if it redirected, where to.
+    validations:
+      required: false
+  - type: input
     id: replacement
     attributes:
       label: Suggested correct URL

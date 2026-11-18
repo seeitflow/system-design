@@ -6,7 +6,16 @@ body:
   - type: markdown
     attributes:
       value: |
-        Read CONTRIBUTING.md first. Suggestions must be relevant to system design, independently useful and verified by you. Please do not include personal or sensitive information.
+        Read CONTRIBUTING.md first. Suggestions must be relevant to system design, independently useful and verified by you. External references are considered separately and are never added automatically. Promotional, affiliate and reciprocal-link requests will be closed. Please do not include personal or sensitive information.
+  - type: dropdown
+    id: lane
+    attributes:
+      label: Kind of suggestion
+      options:
+        - Missing SeeItFlow lesson for the catalogue
+        - External reference for separate editorial consideration
+    validations:
+      required: true
   - type: input
     id: url
     attributes:

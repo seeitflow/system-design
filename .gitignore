@@ -1,6 +1,10 @@
 # Local review artifacts and working documents (never published)
 .review/
-SEEITFLOW_*
+SEEITFLOW_*_REQUIREMENTS.md
+SEEITFLOW_*_INVENTORY.json
+SEEITFLOW_*_REVIEW.md
+*.bak
+live-url-evidence.json
 
 # Editors, tools and OS files
 .idea/

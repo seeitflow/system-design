@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD041 -->
 ## Purpose
 
 <!-- What does this change do and why? -->
@@ -25,4 +26,7 @@
 - [ ] Every link was opened and checked, and uses its canonical HTTPS URL
 - [ ] No private, confidential or copied content
 - [ ] No promotional or tracking links
-- [ ] `python3 scripts/validate_catalogue.py check` passes
+- [ ] Catalogue changes were made in `data/resources.json` and `render` was run
+- [ ] `python3 scripts/validate_catalogue.py check`, the tests and the Markdown lint pass
+- [ ] No internal review files, private inventories or credentials are included
+- [ ] No license, ownership or governance change is included without owner approval

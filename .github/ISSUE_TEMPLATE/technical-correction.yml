@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        This form covers text in this repository. Corrections to lessons on the website may be triaged here but are not automatic website changes. Please do not include personal or sensitive information.
+        This form covers text in this repository. Corrections to lessons on the website may be triaged here but are not automatic website changes. Please do not include personal or sensitive information. Secrets and security issues must go through SECURITY.md, not a public issue.
   - type: input
     id: entry
     attributes:
@@ -14,6 +14,13 @@ body:
       description: The entry title and the README section it appears in.
     validations:
       required: true
+  - type: input
+    id: url
+    attributes:
+      label: Exact URL
+      description: Optional. The lesson URL the description refers to.
+    validations:
+      required: false
   - type: textarea
     id: issue
     attributes:
