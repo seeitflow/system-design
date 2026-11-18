@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Please do not include personal or sensitive information. Credentials or security issues must be reported privately; see SECURITY.md.
+        Please do not include personal or sensitive information. Credentials, security issues and conduct reports must be sent confidentially; see SECURITY.md. By submitting you agree to the contribution terms in CONTRIBUTING.md.
   - type: input
     id: entry
     attributes:

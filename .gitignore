@@ -4,7 +4,11 @@ SEEITFLOW_*_REQUIREMENTS.md
 SEEITFLOW_*_INVENTORY.json
 SEEITFLOW_*_REVIEW.md
 *.bak
-live-url-evidence.json
+live-url-evidence*.json
+*.bundle
+prompt.txt
+IDENTITY_POLICY.json
+APPROVED_BASELINE.json
 
 # Editors, tools and OS files
 .idea/

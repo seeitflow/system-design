@@ -527,7 +527,7 @@
       "group": "Networking and APIs",
       "title": "Pagination",
       "url": "https://seeitflow.com/core-concepts/fundamentals/pagination",
-      "description": "Why offset pagination degrades on deep pages, how cursor and keyset pagination avoid that cost, and how changing data affects results."
+      "description": "Why offset pagination slows on deep pages, how keyset pagination backed by an index reduces that scanning cost, and how concurrent changes affect page results."
     },
     {
       "id": "idempotency",
@@ -543,7 +543,7 @@
       "group": "Data storage and indexing",
       "title": "Database Foundations",
       "url": "https://seeitflow.com/core-concepts/data-database-concepts/db-foundations",
-      "description": "How databases store data, run queries, guarantee durability and handle concurrent access before you study indexing or transactions."
+      "description": "How databases store data, run queries, apply durability mechanisms such as logging, and coordinate concurrent access, with the limits of those guarantees, before you study indexing or transactions."
     },
     {
       "id": "db-data-modeling",
@@ -791,7 +791,7 @@
       "group": "Infrastructure and deployment",
       "title": "Kubernetes",
       "url": "https://seeitflow.com/backend-systems/technologies/kubernetes/fundamentals",
-      "description": "Explore how pods, deployments, services and the control plane schedule, expose and reconcile workloads across a cluster."
+      "description": "Explore how pods, deployments, services and the control plane divide the work: the scheduler places pods, deployments manage replicas, and services give workloads stable network access."
     },
     {
       "id": "llm-overview",
@@ -863,7 +863,7 @@
       "group": "Resilience patterns",
       "title": "Bulkhead",
       "url": "https://seeitflow.com/core-concepts/core-patterns/bulkhead",
-      "description": "How separate resource pools per workload stop one failing dependency from exhausting capacity for everything else."
+      "description": "How separate resource pools per workload limit the spread of resource exhaustion, so one slow dependency is less likely to consume the capacity shared by everything else."
     },
     {
       "id": "load-shedding",

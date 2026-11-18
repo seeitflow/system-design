@@ -15,7 +15,7 @@ jobs:
   verify:
     if: github.repository == 'seeitflow/system-design' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/sd_creation')
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 70
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -34,15 +34,19 @@ jobs:
         if: always()
         run: |
           python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
-          import collections, json, os
+          import json, os
           if not os.path.exists("live-url-evidence.json"):
               print("No evidence file was produced.")
           else:
-              results = json.load(open("live-url-evidence.json"))["results"]
-              counts = collections.Counter(r["result"] for r in results)
-              print("| Result | URLs |\n| --- | --- |")
-              for name, n in sorted(counts.items()):
-                  print(f"| {name} | {n} |")
+              ev = json.load(open("live-url-evidence.json"))
+              s = ev.get("summary", {})
+              print("| Check | URLs |\n| --- | --- |")
+              for key in ("total", "verified", "broken", "redirected", "uncertain_or_blocked",
+                          "content_mismatch", "canonical_mismatch", "robots_issue"):
+                  print(f"| {key.replace('_', ' ')} | {s.get(key, 'n/a')} |")
+              print(f"\nSource commit: `{ev.get('source_commit')}`  ")
+              print(f"Catalogue digest: `{ev.get('catalogue_digest')}`  ")
+              print(f"Validator version: `{ev.get('validator_version')}`")
           PY
 
       - name: Upload structured evidence

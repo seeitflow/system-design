@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        This form covers text in this repository. Corrections to lessons on the website may be triaged here but are not automatic website changes. Please do not include personal or sensitive information. Secrets and security issues must go through SECURITY.md, not a public issue.
+        This form covers text in this repository. Corrections to lessons on the website may be triaged here but are not automatic website changes. Please do not include personal or sensitive information. Secrets, security issues and conduct reports must go through SECURITY.md, not a public issue. By submitting you agree to the contribution terms in CONTRIBUTING.md.
   - type: input
     id: entry
     attributes:

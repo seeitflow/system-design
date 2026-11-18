@@ -29,6 +29,14 @@ SeeItFlow system design resource directory. It is not open source software.
    owners and is subject to its own license or attribution requirements.
    Linking to a third-party resource does not grant any right in it.
 
+   Third-party notice: CODE_OF_CONDUCT.md is adapted from the
+   Contributor Covenant, version 2.1, which is licensed under Creative Commons
+   Attribution 4.0 International (CC BY 4.0),
+   https://creativecommons.org/licenses/by/4.0/. That document stays under
+   CC BY 4.0, with the attribution and statement of changes it contains. This
+   notice applies to no other file, and SeeItFlow's original material remains
+   All Rights Reserved.
+
 5. Contributions. Contributions are governed by the contribution terms in
    CONTRIBUTING.md.
 

@@ -1,12 +1,18 @@
-# System Design — A Visual Learning Guide
+# System Design Resources: A Visual Learning Guide with Case Studies and Interview Preparation
 
 > **Don't just learn how systems work. See them work.**
 
-A curated system design learning guide by [SeeItFlow](https://seeitflow.com/): <!-- BEGIN GENERATED:count_total -->105<!-- END GENERATED:count_total --> resources covering real-world system design case studies, distributed systems fundamentals, software architecture and production engineering. Every entry links to the complete lesson on SeeItFlow, where the architecture is built up step by step with interactive visualizations rather than static diagrams.
+A curated system design learning guide by [SeeItFlow](https://seeitflow.com/): <!-- BEGIN GENERATED:count_total -->105<!-- END GENERATED:count_total --> resources covering system design case studies, distributed systems fundamentals, software architecture and production engineering. Every entry links to the complete lesson on SeeItFlow, where the architecture is built up step by step with interactive visualizations rather than static diagrams.
 
 The lessons are currently free to read on SeeItFlow, with no registration required. They suit students, early-career developers, experienced backend engineers and anyone preparing for a system design interview. This repository is the catalogue and navigation layer; the lessons, visualizations and detailed case studies live on the website.
 
 **Start here: [visual system design on SeeItFlow](https://seeitflow.com/system-design).**
+
+## What is system design?
+
+System design is the practice of choosing the components, data models and communication patterns that let a software system meet its requirements for scale, reliability, latency and cost, and of understanding the trade-offs behind each choice. A beginner can start with how requests travel through networks, how data is stored and cached, and how services communicate, then study complete designs that combine them.
+
+The lessons focus on behavior you can watch rather than only read about: a ticket booking system handling a double-booking race, a Kafka cluster recovering from a broker failure, concurrent PostgreSQL transactions governed by MVCC, a cache stampede amplifying load on a database, or a rider-driver matching flow. Each case study explains requirements, architecture, trade-offs and failure scenarios, and includes an interview perspective for learners preparing for system design interviews.
 
 ## How to use this guide
 
@@ -17,6 +23,7 @@ The lessons are currently free to read on SeeItFlow, with no registration requir
 
 ## Table of contents
 
+- [What is system design?](#what-is-system-design)
 - [Recommended learning path](#recommended-learning-path)
 - [System design case studies](#system-design-case-studies)
 - [Foundations and distributed building blocks](#foundations-and-distributed-building-blocks)
@@ -117,12 +124,12 @@ These are learning designs inspired by familiar products. They are educational e
 - [API Design](https://seeitflow.com/core-concepts/fundamentals/api-design) — How to design consistent API contracts, including resource modeling, error handling, pagination and versioning.
 - [REST APIs](https://seeitflow.com/core-concepts/fundamentals/rest) — Which constraints make an API RESTful, how method semantics interact with caching, and how REST differs from RPC.
 - [gRPC](https://seeitflow.com/core-concepts/fundamentals/grpc) — How Protobuf contracts, streaming calls and deadlines work in gRPC, and when it is a better fit than REST.
-- [Pagination](https://seeitflow.com/core-concepts/fundamentals/pagination) — Why offset pagination degrades on deep pages, how cursor and keyset pagination avoid that cost, and how changing data affects results.
+- [Pagination](https://seeitflow.com/core-concepts/fundamentals/pagination) — Why offset pagination slows on deep pages, how keyset pagination backed by an index reduces that scanning cost, and how concurrent changes affect page results.
 - [Idempotency](https://seeitflow.com/core-concepts/fundamentals/idempotency) — How idempotency keys let clients retry safely, and how to handle concurrent duplicates and a reused key with a different payload.
 
 ### Data storage and indexing
 
-- [Database Foundations](https://seeitflow.com/core-concepts/data-database-concepts/db-foundations) — How databases store data, run queries, guarantee durability and handle concurrent access before you study indexing or transactions.
+- [Database Foundations](https://seeitflow.com/core-concepts/data-database-concepts/db-foundations) — How databases store data, run queries, apply durability mechanisms such as logging, and coordinate concurrent access, with the limits of those guarantees, before you study indexing or transactions.
 - [Database Data Modeling](https://seeitflow.com/core-concepts/data-database-concepts/db-data-modeling) — How keys, constraints, normalization and query-driven design shape a schema, and techniques for migrating it while the system stays online.
 - [Database Indexing](https://seeitflow.com/core-concepts/data-database-concepts/db-indexing) — How indexes speed up queries, how composite indexes are ordered, and why the optimizer sometimes ignores an index.
 - [Database Transactions & Concurrency](https://seeitflow.com/core-concepts/data-database-concepts/db-transactions-concurrency) — What ACID guarantees, isolation levels, locking and multi-version concurrency control (MVCC) mean, and when optimistic or pessimistic concurrency fits.
@@ -168,7 +175,7 @@ These are learning designs inspired by familiar products. They are educational e
 ### Infrastructure and deployment
 
 - [Docker](https://seeitflow.com/backend-systems/technologies/docker/fundamentals) — Understand image layers, container isolation and networking, and how applications are packaged and deployed consistently.
-- [Kubernetes](https://seeitflow.com/backend-systems/technologies/kubernetes/fundamentals) — Explore how pods, deployments, services and the control plane schedule, expose and reconcile workloads across a cluster.
+- [Kubernetes](https://seeitflow.com/backend-systems/technologies/kubernetes/fundamentals) — Explore how pods, deployments, services and the control plane divide the work: the scheduler places pods, deployments manage replicas, and services give workloads stable network access.
 
 ### AI system building blocks
 
@@ -188,7 +195,7 @@ These are learning designs inspired by familiar products. They are educational e
 - [Circuit Breaker](https://seeitflow.com/core-concepts/core-patterns/circuit-breaker) — How closed, open and half-open states stop calls to a failing dependency, and how breakers differ from timeouts and fallbacks.
 - [Rate Limiting](https://seeitflow.com/core-concepts/core-patterns/rate-limiting) — A comparison of fixed-window, sliding-window, token-bucket and leaky-bucket limiters, and what changes when limits must hold across several servers.
 - [Backpressure](https://seeitflow.com/core-concepts/core-patterns/backpressure) — Learn how downstream capacity signals regulate upstream work, and compare bounded buffering, blocking and overload policies when consumers fall behind.
-- [Bulkhead](https://seeitflow.com/core-concepts/core-patterns/bulkhead) — How separate resource pools per workload stop one failing dependency from exhausting capacity for everything else.
+- [Bulkhead](https://seeitflow.com/core-concepts/core-patterns/bulkhead) — How separate resource pools per workload limit the spread of resource exhaustion, so one slow dependency is less likely to consume the capacity shared by everything else.
 - [Load Shedding](https://seeitflow.com/core-concepts/core-patterns/load-shedding) — How rejecting low-priority work keeps a system useful under overload, and how this differs from rate limiting and circuit breaking.
 
 ### Architecture decisions and trade-offs
@@ -223,12 +230,14 @@ These are learning designs inspired by familiar products. They are educational e
 
 A practical loop for any design problem: clarify the requirements, estimate the scale, identify the constraints, outline the architecture, then analyze trade-offs and failure modes. Attempt a design on your own first, then compare your reasoning with the matching [case study](#system-design-case-studies). Each case study on SeeItFlow includes an interview perspective page. No resource here guarantees an interview outcome.
 
+Fundamentals that interviews rely on are covered under [distributed systems fundamentals](#foundations-and-distributed-building-blocks): [networking](#networking-and-apis), [databases](#data-storage-and-indexing), [caching and scalability](#scalability-and-caching), [messaging](#asynchronous-communication) and [consistency](#consistency-and-coordination). The [architecture trade-offs](#architecture-decisions-and-trade-offs) topics help you justify the choices you make.
+
 ## About and contributing
 
-This repository is a public educational resource directory published by SeeItFlow. Learn more on the [SeeItFlow About page](https://seeitflow.com/about). Complete lessons, visualizations and case studies are on the website and are not part of this repository.
+This repository is a public educational resource directory published by SeeItFlow. Learn more about the publisher on the [SeeItFlow About page](https://seeitflow.com/about). Complete lessons, visualizations and case studies are on the website and are not part of this repository.
 
 Found a broken link or a technical error, or want to suggest a resource? Use the [issue templates](https://github.com/seeitflow/system-design/issues/new/choose) or read [CONTRIBUTING.md](CONTRIBUTING.md). Product feedback is welcome on the [SeeItFlow contact page](https://seeitflow.com/contact).
 
 ## License
 
-Copyright (c) 2026 SeeItFlow. All rights reserved. This repository is public but is not open source: see [LICENSE](LICENSE). The SeeItFlow lessons, visualizations, name and branding are not licensed by this repository. Contributions are accepted under the terms in [CONTRIBUTING.md](CONTRIBUTING.md#contribution-terms).
+Copyright (c) 2026 SeeItFlow. All rights reserved. This repository is public but is not open source: see [LICENSE](LICENSE). The SeeItFlow lessons, visualizations, name and branding are not licensed by this repository. Contributions are accepted under the [contribution terms](CONTRIBUTING.md#contribution-terms).

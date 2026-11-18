@@ -76,6 +76,12 @@ Community Impact Guidelines were inspired by [Mozilla's code of conduct enforcem
 
 For answers to common questions about this code of conduct, see the FAQ at [https://www.contributor-covenant.org/faq][FAQ]. Translations are available at [https://www.contributor-covenant.org/translations][translations].
 
+## Licensing of this Code of Conduct and changes
+
+The Contributor Covenant, version 2.1, is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). This document is an adaptation of it and keeps that attribution. The rest of this repository is All Rights Reserved; see [LICENSE](LICENSE).
+
+Changes: the enforcement contact is set to `hello@seeitflow.com` and described as confidential, and the headings and wording of the Enforcement section were adjusted to match. The Pledge, Standards and Community Impact Guidelines are otherwise unchanged. The Contributor Covenant authors do not endorse this adaptation.
+
 [homepage]: https://www.contributor-covenant.org
 [v2.1]: https://www.contributor-covenant.org/version/2/1/code_of_conduct.html
 [Mozilla CoC]: https://github.com/mozilla/diversity
