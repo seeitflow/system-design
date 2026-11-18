@@ -1,0 +1,794 @@
+{
+  "schema_version": 1,
+  "site": "https://seeitflow.com/",
+  "site_pages": {
+    "system_design": "https://seeitflow.com/system-design",
+    "about": "https://seeitflow.com/about"
+  },
+  "resources": [
+    {
+      "id": "whatsapp",
+      "kind": "design",
+      "group": "Real-time communication and collaboration",
+      "title": "Messaging Platform",
+      "url": "https://seeitflow.com/system-design/foundations/whatsapp/complete-design",
+      "challenges": "persistent connections, message ordering, offline delivery, group fan-out"
+    },
+    {
+      "id": "collab-editor",
+      "kind": "design",
+      "group": "Real-time communication and collaboration",
+      "title": "Design Google Docs / Real-Time Collaborative Editor",
+      "url": "https://seeitflow.com/system-design/intermediate/collab-editor/complete-design",
+      "challenges": "concurrent edits with operational transform, presence, offline sync, sharded document servers"
+    },
+    {
+      "id": "notification",
+      "kind": "design",
+      "group": "Real-time communication and collaboration",
+      "title": "Notification System",
+      "url": "https://seeitflow.com/system-design/foundations/notification/complete-design",
+      "challenges": "queue-based decoupling, priority lanes, retry storms, delivery tracking"
+    },
+    {
+      "id": "leaderboard",
+      "kind": "design",
+      "group": "Real-time communication and collaboration",
+      "title": "Real-Time Gaming Leaderboard",
+      "url": "https://seeitflow.com/system-design/intermediate/leaderboard/complete-design",
+      "challenges": "sorted-set ranking, deterministic tie-breaking, idempotent score ingestion, season rollover"
+    },
+    {
+      "id": "ticketbooking",
+      "kind": "design",
+      "group": "Booking, marketplaces and transactions",
+      "title": "Ticket Booking System",
+      "url": "https://seeitflow.com/system-design/intermediate/ticketbooking/complete-design",
+      "challenges": "double-booking races, temporary seat holds, hold expiry, admission control for high-demand events"
+    },
+    {
+      "id": "hotel-reservation",
+      "kind": "design",
+      "group": "Booking, marketplaces and transactions",
+      "title": "Hotel Reservation System",
+      "url": "https://seeitflow.com/system-design/intermediate/hotel-reservation/complete-design",
+      "challenges": "room-night inventory, last-room races, atomic multi-night allocation, payment crash recovery"
+    },
+    {
+      "id": "uber",
+      "kind": "design",
+      "group": "Booking, marketplaces and transactions",
+      "title": "Ride-Hailing Platform",
+      "url": "https://seeitflow.com/system-design/advanced-distributed-systems/uber/complete-design",
+      "challenges": "geospatial indexing, rider-driver matching, ETA prediction, surge pricing"
+    },
+    {
+      "id": "ecommerce",
+      "kind": "design",
+      "group": "Booking, marketplaces and transactions",
+      "title": "E-commerce Platform",
+      "url": "https://seeitflow.com/system-design/intermediate/ecommerce/complete-design",
+      "challenges": "inventory reservation, checkout orchestration, transactional outbox, asynchronous fulfillment"
+    },
+    {
+      "id": "payment",
+      "kind": "design",
+      "group": "Booking, marketplaces and transactions",
+      "title": "Payment System",
+      "url": "https://seeitflow.com/system-design/intermediate/payment/complete-design",
+      "challenges": "idempotency keys, timeout ambiguity, safe retries, provider reconciliation"
+    },
+    {
+      "id": "splitwise",
+      "kind": "design",
+      "group": "Booking, marketplaces and transactions",
+      "title": "Splitwise (Shared Expense Manager)",
+      "url": "https://seeitflow.com/system-design/intermediate/splitwise/complete-design",
+      "challenges": "split algorithms, immutable ledger, debt simplification, idempotent writes"
+    },
+    {
+      "id": "stock-exchange",
+      "kind": "design",
+      "group": "Booking, marketplaces and transactions",
+      "title": "Stock Exchange",
+      "url": "https://seeitflow.com/system-design/advanced-distributed-systems/stock-exchange/complete-design",
+      "challenges": "price-time priority matching, deterministic sequencing, durable journaling, fenced failover"
+    },
+    {
+      "id": "youtube",
+      "kind": "design",
+      "group": "Social, media and content delivery",
+      "title": "Video Streaming Platform",
+      "url": "https://seeitflow.com/system-design/intermediate/youtube/complete-design",
+      "challenges": "resumable uploads, asynchronous transcoding, adaptive bitrate streaming, CDN delivery"
+    },
+    {
+      "id": "netflix",
+      "kind": "design",
+      "group": "Social, media and content delivery",
+      "title": "Netflix",
+      "url": "https://seeitflow.com/system-design/advanced-distributed-systems/netflix/complete-design",
+      "challenges": "control-plane and data-plane separation, asynchronous transcoding, adaptive bitrate delivery, regional resilience"
+    },
+    {
+      "id": "instagram",
+      "kind": "design",
+      "group": "Social, media and content delivery",
+      "title": "Social Media Platform",
+      "url": "https://seeitflow.com/system-design/advanced-distributed-systems/instagram/complete-design",
+      "challenges": "media uploads, social graph, fan-out on write, the hot-user problem"
+    },
+    {
+      "id": "twitter",
+      "kind": "design",
+      "group": "Social, media and content delivery",
+      "title": "Twitter / X — Timeline",
+      "url": "https://seeitflow.com/system-design/advanced-distributed-systems/twitter/complete-design",
+      "challenges": "fan-out on write, celebrity write amplification, hybrid fan-out, timeline caching"
+    },
+    {
+      "id": "filestorage",
+      "kind": "design",
+      "group": "Social, media and content delivery",
+      "title": "File Storage & Sync",
+      "url": "https://seeitflow.com/system-design/foundations/filestorage/complete-design",
+      "challenges": "resumable chunked uploads, separating metadata from file data, multi-device sync, conflict resolution"
+    },
+    {
+      "id": "cdn",
+      "kind": "design",
+      "group": "Social, media and content delivery",
+      "title": "Design a Global CDN",
+      "url": "https://seeitflow.com/system-design/advanced-distributed-systems/cdn/complete-design",
+      "challenges": "edge caching, invalidation, origin shielding, anycast routing"
+    },
+    {
+      "id": "url-shortener",
+      "kind": "design",
+      "group": "Distributed infrastructure",
+      "title": "URL Shortener",
+      "url": "https://seeitflow.com/system-design/foundations/url-shortener/complete-design",
+      "challenges": "short-code generation, cache-first reads, redirect semantics, viral traffic spikes"
+    },
+    {
+      "id": "task-scheduler",
+      "kind": "design",
+      "group": "Distributed infrastructure",
+      "title": "Distributed Task Scheduler",
+      "url": "https://seeitflow.com/system-design/foundations/task-scheduler/complete-design",
+      "challenges": "due-job discovery, leader election, worker leases and heartbeats, retries with backoff"
+    },
+    {
+      "id": "distributed-cache",
+      "kind": "design",
+      "group": "Distributed infrastructure",
+      "title": "Design a Distributed Cache",
+      "url": "https://seeitflow.com/system-design/advanced-distributed-systems/distributed-cache/complete-design",
+      "challenges": "stampede protection, hot keys, sharding with consistent hashing or hash slots, replica failover"
+    },
+    {
+      "id": "distributed-kv-store",
+      "kind": "design",
+      "group": "Distributed infrastructure",
+      "title": "Design a Distributed Key-Value Store",
+      "url": "https://seeitflow.com/system-design/advanced-distributed-systems/distributed-kv-store/complete-design",
+      "challenges": "write-ahead logging, LSM storage, quorum replication, tombstones and TTL"
+    },
+    {
+      "id": "distributed-message-queue",
+      "kind": "design",
+      "group": "Distributed infrastructure",
+      "title": "Design a Distributed Message Queue & Pub/Sub System",
+      "url": "https://seeitflow.com/system-design/advanced-distributed-systems/distributed-message-queue/complete-design",
+      "challenges": "durable work queues, partitioned logs, consumer groups and offsets, idempotent consumers"
+    },
+    {
+      "id": "distributed-rate-limiter",
+      "kind": "design",
+      "group": "Distributed infrastructure",
+      "title": "Design a Distributed Rate Limiter",
+      "url": "https://seeitflow.com/system-design/advanced-distributed-systems/distributed-rate-limiter/complete-design",
+      "challenges": "token buckets, atomic shared counters, fail-open versus fail-closed, multi-region quota leases"
+    },
+    {
+      "id": "distributed-logging",
+      "kind": "design",
+      "group": "Distributed infrastructure",
+      "title": "Design a Distributed Logging System",
+      "url": "https://seeitflow.com/system-design/advanced-distributed-systems/distributed-logging/complete-design",
+      "challenges": "log agents with bounded spools, durable partitioned buffering, full-text versus label-chunk storage, tenant-scoped queries"
+    },
+    {
+      "id": "feature-flag-system",
+      "kind": "design",
+      "group": "Distributed infrastructure",
+      "title": "Design a Multi-Tenant Feature Flag System",
+      "url": "https://seeitflow.com/system-design/intermediate/feature-flag-system/complete-design",
+      "challenges": "local SDK evaluation, tenant isolation, stable percentage rollouts, control-plane outage safety"
+    },
+    {
+      "id": "search-autocomplete",
+      "kind": "design",
+      "group": "Search, data and AI systems",
+      "title": "Search & Autocomplete",
+      "url": "https://seeitflow.com/system-design/foundations/search-autocomplete/complete-design",
+      "challenges": "inverted indexes, indexing pipelines, prefix-trie autocomplete, sharding and caching"
+    },
+    {
+      "id": "web-crawler",
+      "kind": "design",
+      "group": "Search, data and AI systems",
+      "title": "Design a Distributed Web Crawler",
+      "url": "https://seeitflow.com/system-design/advanced-distributed-systems/web-crawler/complete-design",
+      "challenges": "per-origin politeness, durable leased frontier, deduplication, conditional recrawl"
+    },
+    {
+      "id": "recommendation-system",
+      "kind": "design",
+      "group": "Search, data and AI systems",
+      "title": "Design a Recommendation System",
+      "url": "https://seeitflow.com/system-design/intermediate/recommendation-system/complete-design",
+      "challenges": "candidate generation, multi-stage ranking, feature stores, feedback loops"
+    },
+    {
+      "id": "chatgpt",
+      "kind": "design",
+      "group": "Search, data and AI systems",
+      "title": "Design ChatGPT / AI Assistant",
+      "url": "https://seeitflow.com/system-design/ai-systems/chatgpt/complete-design",
+      "challenges": "response streaming, retrieval-augmented context, memory and tools, cost control"
+    },
+    {
+      "id": "rag-system",
+      "kind": "design",
+      "group": "Search, data and AI systems",
+      "title": "Enterprise RAG Knowledge Assistant",
+      "url": "https://seeitflow.com/system-design/ai-systems/rag-system/complete-design",
+      "challenges": "durable ingestion, hybrid retrieval, authorization before generation, citation validation"
+    },
+    {
+      "id": "ai-gateway",
+      "kind": "design",
+      "group": "Search, data and AI systems",
+      "title": "Design an AI Gateway",
+      "url": "https://seeitflow.com/system-design/ai-systems/ai-gateway/complete-design",
+      "challenges": "model-aware routing, atomic budget admission, streaming failure semantics, control and data planes"
+    },
+    {
+      "id": "http",
+      "kind": "foundation",
+      "group": "Networking and APIs",
+      "title": "HTTP",
+      "url": "https://seeitflow.com/networking/foundations/http/fundamentals",
+      "description": "How HTTP methods, status codes, cookies and caching behave, and what changed between HTTP/1.1, HTTP/2 and HTTP/3."
+    },
+    {
+      "id": "dns",
+      "kind": "foundation",
+      "group": "Networking and APIs",
+      "title": "DNS",
+      "url": "https://seeitflow.com/networking/foundations/dns/fundamentals",
+      "description": "How a hostname is resolved through recursive lookups, and how record types, TTLs and caching affect failover and traffic distribution."
+    },
+    {
+      "id": "tcp",
+      "kind": "foundation",
+      "group": "Networking and APIs",
+      "title": "TCP",
+      "url": "https://seeitflow.com/networking/foundations/tcp/fundamentals",
+      "description": "How a TCP connection is established, kept reliable under packet loss and congestion, and closed."
+    },
+    {
+      "id": "loadbalancer",
+      "kind": "foundation",
+      "group": "Networking and APIs",
+      "title": "Load Balancer",
+      "url": "https://seeitflow.com/networking/traffic-routing/loadbalancer/fundamentals",
+      "description": "How load balancers choose servers, detect unhealthy ones, drain connections and fail over between regions."
+    },
+    {
+      "id": "api-gateway",
+      "kind": "foundation",
+      "group": "Networking and APIs",
+      "title": "API Gateway",
+      "url": "https://seeitflow.com/networking/traffic-routing/api-gateway/fundamentals",
+      "description": "What a single entry point adds to a service architecture: routing, authentication, rate limiting and aggregation."
+    },
+    {
+      "id": "reverse-proxy",
+      "kind": "foundation",
+      "group": "Networking and APIs",
+      "title": "Reverse Proxy (Nginx)",
+      "url": "https://seeitflow.com/networking/traffic-routing/reverse-proxy/fundamentals",
+      "description": "What a reverse proxy such as Nginx does in front of servers: TLS termination, routing, caching and availability."
+    },
+    {
+      "id": "networking-advanced-networking-cdn",
+      "kind": "foundation",
+      "group": "Networking and APIs",
+      "title": "CDN",
+      "url": "https://seeitflow.com/networking/advanced-networking/cdn/fundamentals",
+      "description": "How edge caches serve content close to users, and how TTLs, invalidation and origin shielding shape hit rates."
+    },
+    {
+      "id": "api-design",
+      "kind": "foundation",
+      "group": "Networking and APIs",
+      "title": "API Design",
+      "url": "https://seeitflow.com/core-concepts/fundamentals/api-design",
+      "description": "How to design consistent API contracts, including resource modeling, error handling, pagination and versioning."
+    },
+    {
+      "id": "rest",
+      "kind": "foundation",
+      "group": "Networking and APIs",
+      "title": "REST",
+      "url": "https://seeitflow.com/core-concepts/fundamentals/rest",
+      "description": "Which constraints make an API RESTful, how method semantics interact with caching, and how REST differs from RPC."
+    },
+    {
+      "id": "grpc",
+      "kind": "foundation",
+      "group": "Networking and APIs",
+      "title": "gRPC",
+      "url": "https://seeitflow.com/core-concepts/fundamentals/grpc",
+      "description": "How Protobuf contracts, streaming calls and deadlines work in gRPC, and when it is a better fit than REST."
+    },
+    {
+      "id": "pagination",
+      "kind": "foundation",
+      "group": "Networking and APIs",
+      "title": "Pagination",
+      "url": "https://seeitflow.com/core-concepts/fundamentals/pagination",
+      "description": "Why offset pagination degrades on deep pages, how cursor and keyset pagination avoid it, and how changing data affects results."
+    },
+    {
+      "id": "idempotency",
+      "kind": "foundation",
+      "group": "Networking and APIs",
+      "title": "Idempotency",
+      "url": "https://seeitflow.com/core-concepts/fundamentals/idempotency",
+      "description": "How idempotency keys let clients retry safely, and how to handle concurrent duplicates and mismatched payloads."
+    },
+    {
+      "id": "db-foundations",
+      "kind": "foundation",
+      "group": "Data storage and indexing",
+      "title": "Database Foundations",
+      "url": "https://seeitflow.com/core-concepts/data-database-concepts/db-foundations",
+      "description": "How databases store data, run queries, guarantee durability and handle concurrent access before you study indexing or transactions."
+    },
+    {
+      "id": "db-data-modeling",
+      "kind": "foundation",
+      "group": "Data storage and indexing",
+      "title": "Database Data Modeling",
+      "url": "https://seeitflow.com/core-concepts/data-database-concepts/db-data-modeling",
+      "description": "How keys, constraints, normalization and query-driven design shape a schema, and how to migrate it without downtime."
+    },
+    {
+      "id": "db-indexing",
+      "kind": "foundation",
+      "group": "Data storage and indexing",
+      "title": "Database Indexing",
+      "url": "https://seeitflow.com/core-concepts/data-database-concepts/db-indexing",
+      "description": "How indexes speed up queries, how composite indexes are ordered, and why the optimizer sometimes ignores an index."
+    },
+    {
+      "id": "db-transactions-concurrency",
+      "kind": "foundation",
+      "group": "Data storage and indexing",
+      "title": "Database Transactions & Concurrency",
+      "url": "https://seeitflow.com/core-concepts/data-database-concepts/db-transactions-concurrency",
+      "description": "What ACID guarantees, isolation levels, locking and MVCC mean, and when optimistic or pessimistic concurrency control fits."
+    },
+    {
+      "id": "db-specialized-data",
+      "kind": "foundation",
+      "group": "Data storage and indexing",
+      "title": "Specialized Data Stores",
+      "url": "https://seeitflow.com/core-concepts/data-database-concepts/db-specialized-data",
+      "description": "A comparison of relational, document, key-value, search, time-series, graph and vector databases, with guidance on matching each to a workload."
+    },
+    {
+      "id": "postgres",
+      "kind": "foundation",
+      "group": "Data storage and indexing",
+      "title": "PostgreSQL",
+      "url": "https://seeitflow.com/databases/technologies/postgres/fundamentals",
+      "description": "How PostgreSQL implements MVCC, indexing, query planning, write-ahead logging and streaming replication."
+    },
+    {
+      "id": "mongodb",
+      "kind": "foundation",
+      "group": "Data storage and indexing",
+      "title": "MongoDB",
+      "url": "https://seeitflow.com/databases/technologies/mongodb/fundamentals",
+      "description": "How MongoDB handles flexible schemas, aggregation, multi-document transactions, replication and sharding."
+    },
+    {
+      "id": "cassandra",
+      "kind": "foundation",
+      "group": "Data storage and indexing",
+      "title": "Cassandra",
+      "url": "https://seeitflow.com/databases/technologies/cassandra/fundamentals",
+      "description": "How Cassandra partitions and replicates data across a masterless cluster with tunable consistency, gossip and compaction."
+    },
+    {
+      "id": "elasticsearch",
+      "kind": "foundation",
+      "group": "Data storage and indexing",
+      "title": "Elasticsearch",
+      "url": "https://seeitflow.com/databases/technologies/elasticsearch/fundamentals",
+      "description": "How inverted indexes, relevance scoring and sharding make near-real-time full-text search work across a cluster."
+    },
+    {
+      "id": "db-scaling",
+      "kind": "foundation",
+      "group": "Scalability and caching",
+      "title": "Database Scaling",
+      "url": "https://seeitflow.com/core-concepts/data-database-concepts/db-scaling",
+      "description": "The order in which to scale a database, from query tuning and caching to read replicas and sharding, and the failure modes of each step."
+    },
+    {
+      "id": "redis",
+      "kind": "foundation",
+      "group": "Scalability and caching",
+      "title": "Redis",
+      "url": "https://seeitflow.com/backend-systems/technologies/redis/fundamentals",
+      "description": "How Redis serves caching, sessions, streams and pub/sub from memory, and how persistence, replication and cluster sharding work."
+    },
+    {
+      "id": "consistent-hashing",
+      "kind": "foundation",
+      "group": "Scalability and caching",
+      "title": "Consistent Hashing",
+      "url": "https://seeitflow.com/core-concepts/distributed-patterns/consistent-hashing",
+      "description": "How consistent hashing limits key movement when nodes join or leave, and which problems it does not solve."
+    },
+    {
+      "id": "queues-workers",
+      "kind": "foundation",
+      "group": "Asynchronous communication",
+      "title": "Queues & Workers",
+      "url": "https://seeitflow.com/core-concepts/async-systems/queues-workers",
+      "description": "How queues decouple submission from execution, what at-least-once and exactly-once delivery really promise, and how crashed workers recover."
+    },
+    {
+      "id": "pub-sub",
+      "kind": "foundation",
+      "group": "Asynchronous communication",
+      "title": "Pub/Sub",
+      "url": "https://seeitflow.com/core-concepts/async-systems/pub-sub",
+      "description": "How publish/subscribe fans events out to independent consumers, and how consumer groups, ordering scope and schema changes behave."
+    },
+    {
+      "id": "job-processing",
+      "kind": "foundation",
+      "group": "Asynchronous communication",
+      "title": "Job Processing",
+      "url": "https://seeitflow.com/core-concepts/async-systems/job-processing",
+      "description": "How a background job moves through queued, running, retry and failed states, using leases, heartbeats and idempotency."
+    },
+    {
+      "id": "outbox-pattern",
+      "kind": "foundation",
+      "group": "Asynchronous communication",
+      "title": "Outbox Pattern",
+      "url": "https://seeitflow.com/core-concepts/async-systems/outbox-pattern",
+      "description": "Why writing to a database and publishing an event separately can lose one of them, how an outbox table closes that gap, and what delivery guarantee remains."
+    },
+    {
+      "id": "dead-letter-queues",
+      "kind": "foundation",
+      "group": "Asynchronous communication",
+      "title": "Dead-Letter Queues",
+      "url": "https://seeitflow.com/core-concepts/async-systems/dead-letter-queues",
+      "description": "How dead-letter queues set aside unprocessable messages for inspection and replay, and why they do not replace a retry policy."
+    },
+    {
+      "id": "kafka",
+      "kind": "foundation",
+      "group": "Asynchronous communication",
+      "title": "Kafka",
+      "url": "https://seeitflow.com/backend-systems/technologies/kafka/fundamentals",
+      "description": "How Kafka partitions, replicates and retains events, and how consumer groups and offsets determine ordering and recovery."
+    },
+    {
+      "id": "rabbitmq",
+      "kind": "foundation",
+      "group": "Asynchronous communication",
+      "title": "RabbitMQ",
+      "url": "https://seeitflow.com/backend-systems/technologies/rabbitmq/fundamentals",
+      "description": "How RabbitMQ routes messages through exchanges and queues, and how acknowledgements, flow control and durability handle failures."
+    },
+    {
+      "id": "db-distributed-data",
+      "kind": "foundation",
+      "group": "Consistency and coordination",
+      "title": "Distributed Data",
+      "url": "https://seeitflow.com/core-concepts/data-database-concepts/db-distributed-data",
+      "description": "How replication, partitioning, quorums and network partitions interact in distributed databases, and what CAP actually guarantees."
+    },
+    {
+      "id": "distributed-locks",
+      "kind": "foundation",
+      "group": "Consistency and coordination",
+      "title": "Distributed Locks",
+      "url": "https://seeitflow.com/core-concepts/distributed-patterns/distributed-locks",
+      "description": "How leases, TTLs and fencing tokens make distributed locks safer, and when a lock is the wrong tool."
+    },
+    {
+      "id": "saga-pattern",
+      "kind": "foundation",
+      "group": "Consistency and coordination",
+      "title": "Saga Pattern",
+      "url": "https://seeitflow.com/core-concepts/distributed-patterns/saga-pattern",
+      "description": "How sagas coordinate a multi-service transaction with compensating actions, and how orchestration, choreography and two-phase commit compare."
+    },
+    {
+      "id": "cqrs",
+      "kind": "foundation",
+      "group": "Consistency and coordination",
+      "title": "CQRS",
+      "url": "https://seeitflow.com/core-concepts/distributed-patterns/cqrs",
+      "description": "Why separating command and query models can help, why it does not require event sourcing, and when it is worth the added complexity."
+    },
+    {
+      "id": "event-sourcing",
+      "kind": "foundation",
+      "group": "Consistency and coordination",
+      "title": "Event Sourcing",
+      "url": "https://seeitflow.com/core-concepts/distributed-patterns/event-sourcing",
+      "description": "How state is derived from an immutable event history, and how snapshots and schema evolution work."
+    },
+    {
+      "id": "etcd",
+      "kind": "foundation",
+      "group": "Consistency and coordination",
+      "title": "etcd",
+      "url": "https://seeitflow.com/backend-systems/technologies/etcd/fundamentals",
+      "description": "How etcd uses Raft consensus, watches and leases to provide a strongly consistent store for coordination."
+    },
+    {
+      "id": "polling",
+      "kind": "foundation",
+      "group": "Real-time delivery",
+      "title": "Polling",
+      "url": "https://seeitflow.com/core-concepts/realtime-systems/polling",
+      "description": "How interval polling trades freshness for simplicity, and how adaptive backoff and conditional requests help it scale."
+    },
+    {
+      "id": "long-polling",
+      "kind": "foundation",
+      "group": "Real-time delivery",
+      "title": "Long Polling",
+      "url": "https://seeitflow.com/core-concepts/realtime-systems/long-polling",
+      "description": "How holding a request open delivers updates sooner than polling, and how timeouts and reconnects shape the design."
+    },
+    {
+      "id": "sse",
+      "kind": "foundation",
+      "group": "Real-time delivery",
+      "title": "Server-Sent Events",
+      "url": "https://seeitflow.com/core-concepts/realtime-systems/sse",
+      "description": "How a server streams one-way updates to browsers over plain HTTP with Server-Sent Events, and how reconnection, Last-Event-ID, heartbeats and proxies interact."
+    },
+    {
+      "id": "websockets",
+      "kind": "foundation",
+      "group": "Real-time delivery",
+      "title": "WebSockets",
+      "url": "https://seeitflow.com/core-concepts/realtime-systems/websockets",
+      "description": "How the WebSocket handshake, heartbeats, authentication and cross-server fan-out work for full-duplex messaging."
+    },
+    {
+      "id": "presence",
+      "kind": "foundation",
+      "group": "Real-time delivery",
+      "title": "Presence",
+      "url": "https://seeitflow.com/core-concepts/realtime-systems/presence",
+      "description": "How online status is inferred from heartbeats and TTLs, and why presence is approximate."
+    },
+    {
+      "id": "llm-overview",
+      "kind": "foundation",
+      "group": "AI system building blocks",
+      "title": "LLM Overview",
+      "url": "https://seeitflow.com/ai/llms/llm-overview",
+      "description": "How text flows through tokens, transformers and next-token generation, and which components and limits matter in LLM applications."
+    },
+    {
+      "id": "rag-overview",
+      "kind": "foundation",
+      "group": "AI system building blocks",
+      "title": "RAG Architecture",
+      "url": "https://seeitflow.com/ai/rag/rag-overview",
+      "description": "How a retrieval-augmented generation pipeline moves from ingestion and chunking to retrieval, context assembly and citation checks."
+    },
+    {
+      "id": "vector-databases",
+      "kind": "foundation",
+      "group": "AI system building blocks",
+      "title": "Vector Databases",
+      "url": "https://seeitflow.com/ai/rag/vector-databases",
+      "description": "How vector databases store embeddings and build approximate nearest-neighbor indexes with metadata filters, and when brute force is enough."
+    },
+    {
+      "id": "model-serving",
+      "kind": "foundation",
+      "group": "AI system building blocks",
+      "title": "Model Serving",
+      "url": "https://seeitflow.com/ai/ai-infrastructure/model-serving",
+      "description": "How LLM endpoints are deployed, routed, health-checked, autoscaled and monitored, including streaming responses and canary releases."
+    },
+    {
+      "id": "retry-backoff",
+      "kind": "production",
+      "group": "Resilience patterns",
+      "title": "Retry & Backoff",
+      "url": "https://seeitflow.com/core-concepts/core-patterns/retry-backoff",
+      "description": "How to classify errors worth retrying and apply exponential backoff, jitter and retry budgets without overloading a recovering service."
+    },
+    {
+      "id": "circuit-breaker",
+      "kind": "production",
+      "group": "Resilience patterns",
+      "title": "Circuit Breaker",
+      "url": "https://seeitflow.com/core-concepts/core-patterns/circuit-breaker",
+      "description": "How closed, open and half-open states stop calls to a failing dependency, and how breakers differ from timeouts and fallbacks."
+    },
+    {
+      "id": "rate-limiting",
+      "kind": "production",
+      "group": "Resilience patterns",
+      "title": "Rate Limiting",
+      "url": "https://seeitflow.com/core-concepts/core-patterns/rate-limiting",
+      "description": "A comparison of fixed-window, sliding-window, token-bucket and leaky-bucket limiters, and what changes when limits must hold across several servers."
+    },
+    {
+      "id": "backpressure",
+      "kind": "production",
+      "group": "Resilience patterns",
+      "title": "Backpressure",
+      "url": "https://seeitflow.com/core-concepts/core-patterns/backpressure",
+      "description": "Why buffering alone is not backpressure, and how systems respond to producer-consumer imbalance by blocking, rejecting, dropping or scaling."
+    },
+    {
+      "id": "bulkhead",
+      "kind": "production",
+      "group": "Resilience patterns",
+      "title": "Bulkhead",
+      "url": "https://seeitflow.com/core-concepts/core-patterns/bulkhead",
+      "description": "How separate resource pools per workload stop one failing dependency from exhausting capacity for everything else."
+    },
+    {
+      "id": "load-shedding",
+      "kind": "production",
+      "group": "Resilience patterns",
+      "title": "Load Shedding",
+      "url": "https://seeitflow.com/core-concepts/core-patterns/load-shedding",
+      "description": "How rejecting low-priority work keeps a system useful under overload, and how this differs from rate limiting and circuit breaking."
+    },
+    {
+      "id": "architecture-fundamentals",
+      "kind": "production",
+      "group": "Architecture decisions and trade-offs",
+      "title": "Architecture Fundamentals",
+      "url": "https://seeitflow.com/architecture/modules/architecture-fundamentals",
+      "description": "How requirements, quality attributes, constraints and assumptions combine into the decisions that define an architecture."
+    },
+    {
+      "id": "architecture-decision-making",
+      "kind": "production",
+      "group": "Architecture decisions and trade-offs",
+      "title": "Architecture Decision Making",
+      "url": "https://seeitflow.com/architecture/modules/architecture-decision-making",
+      "description": "How to weigh options, judge how reversible a decision is, and record context and consequences in an architecture decision record."
+    },
+    {
+      "id": "scalability-capacity",
+      "kind": "production",
+      "group": "Architecture decisions and trade-offs",
+      "title": "Scalability & Capacity",
+      "url": "https://seeitflow.com/architecture/modules/scalability-capacity",
+      "description": "How to find the saturated resource and choose between scaling, caching, replicas, connection pooling and sharding."
+    },
+    {
+      "id": "reliability-resilience",
+      "kind": "production",
+      "group": "Architecture decisions and trade-offs",
+      "title": "Reliability & Resilience",
+      "url": "https://seeitflow.com/architecture/modules/reliability-resilience",
+      "description": "How reliability, availability and durability differ, and how SLIs, SLOs and resilience patterns fit together."
+    },
+    {
+      "id": "distributed-architecture",
+      "kind": "production",
+      "group": "Architecture decisions and trade-offs",
+      "title": "Distributed Architecture",
+      "url": "https://seeitflow.com/architecture/modules/distributed-architecture",
+      "description": "How partial failure, replication lag and coordination cost shape distributed designs, including CAP, quorums and consensus."
+    },
+    {
+      "id": "multi-region-architecture",
+      "kind": "production",
+      "group": "Architecture decisions and trade-offs",
+      "title": "Multi-Region Architecture",
+      "url": "https://seeitflow.com/architecture/modules/multi-region-architecture",
+      "description": "How active-active and active-passive designs compare, what RTO and RPO mean, and when multi-region is justified over multi-AZ."
+    },
+    {
+      "id": "performance-architecture",
+      "kind": "production",
+      "group": "Architecture decisions and trade-offs",
+      "title": "Performance Architecture",
+      "url": "https://seeitflow.com/architecture/modules/performance-architecture",
+      "description": "How to separate performance from scalability, read tail latency, and locate bottlenecks with tracing, profiling and load tests."
+    },
+    {
+      "id": "architecture-reviews",
+      "kind": "production",
+      "group": "Architecture decisions and trade-offs",
+      "title": "Architecture Reviews",
+      "url": "https://seeitflow.com/architecture/modules/architecture-reviews",
+      "description": "How design, production-readiness, capacity and security reviews differ, and how to prioritize risks using evidence."
+    },
+    {
+      "id": "cache-stampede",
+      "kind": "production",
+      "group": "Failure modes and incident analysis",
+      "title": "Cache Stampede",
+      "url": "https://seeitflow.com/production-engineering/modules/cache-stampede",
+      "description": "Why an expired hot key can flood the database, and how request coalescing, TTL jitter and stale-while-revalidate prevent it."
+    },
+    {
+      "id": "retry-storm",
+      "kind": "production",
+      "group": "Failure modes and incident analysis",
+      "title": "Retry Storm",
+      "url": "https://seeitflow.com/production-engineering/modules/retry-storm",
+      "description": "How retries amplify a transient failure into an outage, and how limits, budgets and circuit breakers contain it."
+    },
+    {
+      "id": "cascading-failure",
+      "kind": "production",
+      "group": "Failure modes and incident analysis",
+      "title": "Cascading Failure",
+      "url": "https://seeitflow.com/production-engineering/modules/cascading-failure",
+      "description": "How one slow dependency exhausts shared threads, connections and queues in the services calling it, and how timeouts and bulkheads limit the spread."
+    },
+    {
+      "id": "kafka-consumer-lag",
+      "kind": "production",
+      "group": "Failure modes and incident analysis",
+      "title": "Kafka Consumer Lag",
+      "url": "https://seeitflow.com/production-engineering/modules/kafka-consumer-lag",
+      "description": "What makes Kafka consumers fall behind, why partition count limits how far a consumer group can scale out, and which remedies address the real bottleneck."
+    },
+    {
+      "id": "database-connection-pool-exhaustion",
+      "kind": "production",
+      "group": "Failure modes and incident analysis",
+      "title": "DB Connection Pool Exhaustion",
+      "url": "https://seeitflow.com/production-engineering/modules/database-connection-pool-exhaustion",
+      "description": "How slow queries, long transactions and leaks exhaust a connection pool, and why a bigger pool can make contention worse."
+    },
+    {
+      "id": "race-condition",
+      "kind": "production",
+      "group": "Failure modes and incident analysis",
+      "title": "Race Condition",
+      "url": "https://seeitflow.com/production-engineering/modules/race-condition",
+      "description": "Why overlapping read-modify-write sequences silently lose updates under load, and how locks, atomic operations or optimistic concurrency prevent it."
+    },
+    {
+      "id": "incident-postmortem",
+      "kind": "production",
+      "group": "Failure modes and incident analysis",
+      "title": "Incident & Postmortem Analysis",
+      "url": "https://seeitflow.com/architecture/modules/incident-postmortem",
+      "description": "How to separate trigger, proximate cause, contributing factors and systemic conditions so postmortem actions address root conditions."
+    }
+  ]
+}

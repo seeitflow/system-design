@@ -1,0 +1,36 @@
+name: Technical correction
+description: Report a technically inaccurate or misleading description in the catalogue.
+title: "Correction: "
+labels: ["technical-correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This form covers text in this repository. Corrections to lessons on the website may be triaged here but are not automatic website changes. Please do not include personal or sensitive information.
+  - type: input
+    id: entry
+    attributes:
+      label: Catalogue entry
+      description: The entry title and the README section it appears in.
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What is inaccurate
+      description: Quote the sentence and explain the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Link to a standard, specification, paper or official documentation that supports the correction.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Proposed correction
+    validations:
+      required: false
