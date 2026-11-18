@@ -165,7 +165,6 @@ class TreeTests(unittest.TestCase):
         self.assertEqual(self.run_tree({"README.md": f"Contact hello{AT}seeitflow.com or pkg{AT}0.24.1\n"}), [])
 
     def test_allowlist(self):
-        self.assertTrue(self.run_tree({"notes/internal.md": "x"}))
         self.assertTrue(self.run_tree({"SEEITFLOW_X_REVIEW.md": "x"}))
 
     def test_email_policy_redacted(self):
@@ -888,7 +887,7 @@ class ManifestAndLicenseTests(unittest.TestCase):
     def test_allowed_manifest(self):
         for n in ("README.md", "LICENSE", "scripts/validate_catalogue.py", ".github/workflows/validate.yml"):
             self.assertEqual(self.tree({n: "text"}), [], n)
-        self.assertTrue(any("allow-list" in e for e in self.tree({"docs/extra.md": "x"})))
+        self.assertEqual(self.tree({"docs/extra.md": "x"}), [])
 
     def test_real_public_tree_matches_manifest(self):
         files = v.public_files()
@@ -935,6 +934,84 @@ class ManifestAndLicenseTests(unittest.TestCase):
         coc = (ROOT / "CODE_OF_CONDUCT.md").read_text(encoding="utf-8")
         self.assertIn("CC BY 4.0", coc)
         self.assertIn("All Rights Reserved", (ROOT / "LICENSE").read_text(encoding="utf-8"))
+
+
+class UnknownFileTests(unittest.TestCase):
+    def tree(self, files, strict=False):
+        warnings = []
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            for name, text in files.items():
+                p = root / name
+                p.parent.mkdir(parents=True, exist_ok=True)
+                p.write_text(text, encoding="utf-8")
+            errors = v.check_tree(list(files), root, strict=strict, warnings=warnings)
+        return errors, warnings
+
+    def test_new_legitimate_files_pass_standard_validation(self):
+        files = {"docs/guide.md": "# Guide\n", "tests/test_other.py": "import unittest\n", "test.txt": ""}
+        errors, warnings = self.tree(files)
+        self.assertEqual(errors, [])
+        self.assertEqual(len(warnings), 3)
+        self.assertTrue(all("manifest" in w for w in warnings))
+
+    def test_unknown_harmless_file_warns_without_failing(self):
+        errors, warnings = self.tree({"test.txt": "hello\n"})
+        self.assertEqual(errors, [])
+        self.assertEqual(len(warnings), 1)
+        self.assertIn("test.txt", warnings[0])
+
+    def test_approved_files_produce_no_warning(self):
+        self.assertEqual(self.tree({"README.md": "x"}), ([], []))
+
+    def test_strict_mode_rejects_unapproved_files(self):
+        errors, warnings = self.tree({"test.txt": "hello\n", "docs/guide.md": "# G\n"}, strict=True)
+        self.assertEqual(len(errors), 2)
+        self.assertEqual(warnings, [])
+
+    def test_prohibited_files_fail_in_both_modes(self):
+        for strict in (False, True):
+            for name in (".review/r.md", "SEEITFLOW_X_REVIEW.md", "x.bundle", "RESOURCE_INVENTORY.json", ".env"):
+                errors, _ = self.tree({name: "x"}, strict=strict)
+                self.assertTrue(any("forbidden" in e for e in errors), (name, strict))
+
+    def test_secrets_and_emails_in_unknown_files_are_detected(self):
+        fake = "gh" + "p_" + "b" * 36
+        errors, warnings = self.tree({"notes/new.txt": f"token {fake}\nmail someone{AT}example.org\n"})
+        self.assertEqual(len(errors), 2)
+        self.assertTrue(all(fake not in e and "someone" not in e for e in errors))
+        self.assertEqual(len(warnings), 1)
+
+    def test_binary_unknown_file_still_fails(self):
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            (root / "img.bin").write_bytes(b"\xff\xfe\x00\x80")
+            self.assertTrue(v.check_tree(["img.bin"], root, warnings=[]))
+
+    def test_warnings_default_is_safe(self):
+        with tempfile.TemporaryDirectory() as t:
+            (Path(t) / "x.txt").write_text("x", encoding="utf-8")
+            self.assertEqual(v.check_tree(["x.txt"], Path(t)), [])
+
+    def run_cli(self, *args):
+        import subprocess
+        return subprocess.run([sys.executable, str(ROOT / "scripts/validate_catalogue.py"), "check", *args],
+                              capture_output=True, text=True, cwd=ROOT)
+
+    def test_cli_modes_with_an_unknown_tracked_file(self):
+        extra = ROOT / "zz_unknown_probe.txt"
+        extra.write_text("harmless\n", encoding="utf-8")
+        try:
+            standard = self.run_cli()
+            strict = self.run_cli("--release")
+        finally:
+            extra.unlink()
+        self.assertEqual(standard.returncode, 0, standard.stdout)
+        self.assertIn("WARNING  tree:", standard.stdout)
+        self.assertIn("zz_unknown_probe.txt", standard.stdout)
+        self.assertIn("maintainer review", standard.stdout)
+        self.assertEqual(strict.returncode, 1, strict.stdout)
+        self.assertIn("ERROR  tree: file is not on the approved public file manifest", strict.stdout)
 
 
 class ConsistencyTests(unittest.TestCase):
